@@ -1,0 +1,118 @@
+GET http://localhost:3001/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJuZXd1c2VyIiwiaWF0IjoxNzM5OTc3NjU3LCJleHAiOjE3Mzk5Nzc2NzJ9.n0EdF0oq8TaZvDEg36pstCyjYfrBR7QEVHk64tJFSF8
+###
+
+POST http://localhost:3001/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJuZXd1c2VyIiwiaWF0IjoxNzM5OTc3NjU3LCJleHAiOjE3Mzk5Nzc2NzJ9.n0EdF0oq8TaZvDEg36pstCyjYfrBR7QEVHk64tJFSF8"
+}
+
+
+
+
+
+  
+
+### Login with valid credentials
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "uid": "newuser",
+    "pwd": "password123"
+}
+
+### Login with invalid credentials
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "uid": "tom",
+    "pwd": "password123"
+}
+
+### Register a new user
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "uid": "newuser",
+    "pwd": "password123"
+}
+
+### Register an existing user (should fail)
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "uid": "tom",
+    "pwd": "1234"
+}
+
+### Get all users (no authentication required)
+GET http://localhost:3001/users
+
+### Get orders for a user (requires authentication)
+GET http://localhost:3001/orders
+Authorization: Bearer <access_token>
+
+### Refresh access token using refresh token
+POST http://localhost:3001/token
+Content-Type: application/json
+
+{
+    "token": "<refresh_token>"
+}
+
+### Login with valid credentials
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "uid": "newuser",
+    "pwd": "password123"
+}
+
+### Login with invalid credentials
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "uid": "tom",
+    "pwd": "wrongpassword"
+}
+
+### Register a new user
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "uid": "newuser",
+    "pwd": "password123"
+}
+
+### Register an existing user (should fail)
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "uid": "tom",
+    "pwd": "1234"
+}
+
+### Get all users (no authentication required)
+GET http://localhost:3001/users
+
+### Get orders for a user (requires authentication)
+GET http://localhost:3001/orders
+Authorization: Bearer <access_token>
+
+### Refresh access token using refresh token
+POST http://localhost:3001/token
+Content-Type: application/json
+
+{
+    "token": "<refresh_token>"
+}
